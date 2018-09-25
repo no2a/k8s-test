@@ -10,7 +10,14 @@ spec:
     image: no2a/hello
     livenessProbe:
       httpGet:
-        path: /healthz
+        path: /liveness
+        port: 3000
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      failureThreshold: 3
+    readinessProbe:
+      httpGet:
+        path: /ready
         port: 3000
       initialDelaySeconds: 10
       periodSeconds: 10
